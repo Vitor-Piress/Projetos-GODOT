@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://6n5bpa3uwwgn"]
+
+[ext_resource type="PackedScene" uid="uid://cy83woauqekd8" path="res://maze.tscn" id="1_p5bfu"]
+[ext_resource type="Script" path="res://world.gd" id="1_u88gh"]
+[ext_resource type="PackedScene" uid="uid://c7ece315fse2q" path="res://player.tscn" id="2_l8lrv"]
+[ext_resource type="PackedScene" uid="uid://7e086fksno2a" path="res://candy.tscn" id="3_haaen"]
+[ext_resource type="PackedScene" uid="uid://5kn1p6axptbm" path="res://turtle.tscn" id="4_kehnp"]
+[ext_resource type="PackedScene" uid="uid://m6xa48grycue" path="res://hud.tscn" id="5_p65be"]
+[ext_resource type="AudioStream" uid="uid://c6uvc2c7olqia" path="res://assets/music_normal.ogg" id="6_8gy1r"]
+[ext_resource type="AudioStream" uid="uid://da5p3ph1spwp3" path="res://assets/music_super.ogg" id="7_t354r"]
+[ext_resource type="Texture2D" uid="uid://bcqqkjjpi8lr1" path="res://assets/gameover.png" id="8_57tql"]
+[ext_resource type="AudioStream" uid="uid://7bhj6rquaawl" path="res://assets/gameover.wav" id="10_wiom5"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_u88gh")
+
+[node name="Maze" parent="." instance=ExtResource("1_p5bfu")]
+
+[node name="Candy" parent="." instance=ExtResource("3_haaen")]
+light_mask = 0
+position = Vector2(98, 288)
+
+[node name="Candy2" parent="." instance=ExtResource("3_haaen")]
+position = Vector2(991, 99)
+
+[node name="Candy3" parent="." instance=ExtResource("3_haaen")]
+position = Vector2(859, 489)
+
+[node name="Candy4" parent="." instance=ExtResource("3_haaen")]
+position = Vector2(468, 615)
+
+[node name="Candy5" parent="." instance=ExtResource("3_haaen")]
+position = Vector2(602, 94)
+
+[node name="Player" parent="." instance=ExtResource("2_l8lrv")]
+position = Vector2(95, 100)
+
+[node name="Turtle" parent="." instance=ExtResource("4_kehnp")]
+position = Vector2(604, 291)
+
+[node name="Turtle2" parent="." instance=ExtResource("4_kehnp")]
+position = Vector2(1024, 479)
+
+[node name="Turtle3" parent="." instance=ExtResource("4_kehnp")]
+position = Vector2(261, 605)
+
+[node name="Turtle4" parent="." instance=ExtResource("4_kehnp")]
+position = Vector2(1065, 37)
+
+[node name="Turtle5" parent="." instance=ExtResource("4_kehnp")]
+position = Vector2(156, 544)
+
+[node name="HUD" parent="." instance=ExtResource("5_p65be")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="MusicNormal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8gy1r")
+autoplay = true
+
+[node name="MusicSuper" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_t354r")
+
+[node name="GameOverImage" type="TextureRect" parent="."]
+visible = false
+offset_left = 318.0
+offset_top = 269.0
+offset_right = 870.0
+offset_bottom = 378.0
+texture = ExtResource("8_57tql")
+
+[node name="SoundGameOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_wiom5")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://5kn1p6axptbm"]
+
+[ext_resource type="Script" path="res://turtle.gd" id="1_5fihr"]
+[ext_resource type="Texture2D" uid="uid://c7jeonqwtcuhn" path="res://assets/turtle_00.png" id="1_saghk"]
+[ext_resource type="Texture2D" uid="uid://qq20yogovfom" path="res://assets/turtle_01.png" id="2_7t84a"]
+[ext_resource type="AudioStream" uid="uid://coqn31xam8quc" path="res://assets/kill_turtle.wav" id="4_u1e0v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ks13e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_saghk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7t84a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krrjc"]
+radius = 20.0
+
+[node name="Turtle" type="CharacterBody2D"]
+script = ExtResource("1_5fihr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 4
+visibility_layer = 7
+sprite_frames = SubResource("SpriteFrames_ks13e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("CircleShape2D_krrjc")
+
+[node name="SoundKill" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_u1e0v")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

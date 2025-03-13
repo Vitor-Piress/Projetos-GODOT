@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://m6xa48grycue"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_n4fok"]
+
+[node name="HUD" type="Node2D"]
+script = ExtResource("1_n4fok")
+
+[node name="LabelScore" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SCORE:"
+
+[node name="InfoScore" type="Label" parent="."]
+offset_left = 64.0
+offset_right = 104.0
+offset_bottom = 23.0
+text = "000"
+
+[node name="LabelTimeout" type="Label" parent="."]
+offset_left = 534.0
+offset_top = 3.0
+offset_right = 603.0
+offset_bottom = 26.0
+text = "TIMEOUT:"
+
+[node name="InfoTimeout" type="Label" parent="."]
+offset_left = 619.0
+offset_top = 3.0
+offset_right = 659.0
+offset_bottom = 26.0
+text = "000"
