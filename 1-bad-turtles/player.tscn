@@ -17,7 +17,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"normal",
-"speed": 30.0
+"speed": 100.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -40,7 +40,7 @@ script = ExtResource("1_s05n5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gqy4x")
 animation = &"normal"
-frame_progress = 0.947449
+frame_progress = 0.310033
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
